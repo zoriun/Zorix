@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <SDL3/SDL_render.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3/SDL_dialog.h>
 #include <vector>
@@ -16,7 +17,7 @@ void FileOpenContext(void* Userdata, const char* const* File, int File_amount){
     if (File[0] != NULL){
         SDL_Texture* NewTexture = IMG_LoadTexture(GlobalRenderer, File[0]);
         if (NewTexture != NULL){
-            Sprite NewSprite(GlobalRenderer, File[0], 0, 0, 200, 200);
+            Sprite NewSprite(GlobalRenderer, File[0], 0, 0, NewTexture->w, NewTexture->h);
             AddToRenderQueue(NewSprite);
         }
     }
@@ -58,6 +59,8 @@ int CreateNewProjectWindow(){
         ToolbarSprite.x = (wx-ToolbarSprite.w)/2;
         ToolbarSprite.y = (wy-ToolbarSprite.h) -(wy-ToolbarSprite.h+50);
 
+        RenderCurrentSpriteQueue(renderer);
+
         ToolbarSprite.render(renderer);
         ImportToolSprite.render(renderer);
         MoveToolButton.render(renderer);
@@ -66,8 +69,6 @@ int CreateNewProjectWindow(){
             SelectedSprite->x = lerp(SelectedSprite->x, mx-(SelectedSprite->w/2), .1);
             SelectedSprite->y = lerp(SelectedSprite->y, my-(SelectedSprite->h/2), .1);
         }
-
-        RenderCurrentSpriteQueue(renderer);
 
         while (SDL_PollEvent(&event))
         {
@@ -88,7 +89,7 @@ int CreateNewProjectWindow(){
                     } else {
                         MoveToolButton.Toggled = false;
                     }
-
+                    
                 }
 
                 if (MoveToolButton.Toggled == true){
@@ -108,6 +109,7 @@ int CreateNewProjectWindow(){
         SDL_Delay(8);
     }
     
+    CleanUpRenderQueue();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

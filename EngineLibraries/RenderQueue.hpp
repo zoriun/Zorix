@@ -29,11 +29,17 @@ Sprite* RenderQueueCheckMouseOverlap(){
     float mx, my;
     SDL_GetMouseState(&mx, &my);
 
-    for (int i = RenderSpriteQueue.size(); i >= 0; i--){
+    for (int i = RenderSpriteQueue.size()-1; i >= 0; i--){
         if (mx >= RenderSpriteQueue[i].x && mx <= RenderSpriteQueue[i].x+RenderSpriteQueue[i].w && my >= RenderSpriteQueue[i].y && my <= RenderSpriteQueue[i].y+RenderSpriteQueue[i].h){
             return &RenderSpriteQueue[i];
         }
     }
 
     return NULL;
+};
+
+void CleanUpRenderQueue(){
+    for (int i = 0; i <= RenderSpriteQueue.size(); i++){
+        SDL_DestroyTexture(RenderSpriteQueue[i].SpriteTexture);
+    }
 };
