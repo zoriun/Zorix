@@ -8,6 +8,7 @@
 #include "Classes.hpp"
 #include "Miscellaneous.hpp"
 #include "RenderQueue.hpp"
+#include "Button.hpp"
 
 SDL_Renderer* GlobalRenderer;
 
@@ -28,8 +29,11 @@ int CreateNewProjectWindow(){
     GlobalRenderer = renderer;
 
     Sprite ImportToolSprite(renderer, "Textures/ImportToolUnselected.png",0,0,40,40);
-    Sprite MoveToolUnselectedSprite(renderer, "Textures/MoveToolUnselected.png", 0,0,40,40);
+    Sprite MoveToolUnselectedSprite(renderer, "Textures/MoveToolUnselected.png", 0,0,50,50);
+    Sprite MoveToolSelectedSprite(renderer, "Textures/MoveToolSelected.png", 0,0,40,40);
     Sprite ToolbarSprite(renderer, "Textures/ToolBar.png", 0,0,375,200);
+
+    ToggleButton ToggleME(renderer, "Textures/MoveToolUnselected.png", "Textures/MoveToolSelected.png", 0,0,40,40);
 
     std::vector<Sprite> MoveableSprites;
 
@@ -50,11 +54,16 @@ int CreateNewProjectWindow(){
         ImportToolSprite.x = (wx-ImportToolSprite.w)/2;
         ImportToolSprite.y = (wy-ImportToolSprite.h) - (wy-ToolbarSprite.h+130);
 
+        MoveToolUnselectedSprite.x = ((wx-MoveToolUnselectedSprite.w)/2)-100;
+        MoveToolUnselectedSprite.y = (wy-MoveToolUnselectedSprite.h) - (wy-MoveToolUnselectedSprite.h)+25;
+
         ToolbarSprite.x = (wx-ToolbarSprite.w)/2;
         ToolbarSprite.y = (wy-ToolbarSprite.h) -(wy-ToolbarSprite.h+50);
 
         ToolbarSprite.render(renderer);
         ImportToolSprite.render(renderer);
+        MoveToolUnselectedSprite.render(renderer);
+        ToggleME.render(renderer);
 
         RenderCurrentSpriteQueue(renderer); 
 
@@ -69,6 +78,16 @@ int CreateNewProjectWindow(){
                 if (mx >= ImportToolSprite.GetVector2().x && mx <= ImportToolSprite.GetVector2().x + ImportToolSprite.GetVector2().w && my >= ImportToolSprite.GetVector2().y && my <= ImportToolSprite.GetVector2().y+ImportToolSprite.GetVector2().h){
                     SDL_ShowOpenFileDialog(FileOpenContext,NULL,window,NULL,0,NULL,false);
                 } // check for importing (holy fuck this is unreadable lmaoo, ill make a click detection library for ts later.)
+
+                if (ToggleME.IsMouseHovering() == true) {
+                    
+                    if (ToggleME.Toggled == false){
+                        ToggleME.Toggled = true;
+                    } else {
+                        ToggleME.Toggled = false;
+                    }
+
+                }
 
             };
         }
