@@ -46,7 +46,7 @@ bool ToggleButton::IsMouseHovering(){
     float mx, my;
     SDL_GetMouseState(&mx, &my);
 
-    if (mx >= x && mx <= x+w && my > y && my <= my){
+    if (mx >= x && mx <= x+w && my >= y && my <= y+h){
         return true;
     }
 

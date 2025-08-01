@@ -33,7 +33,7 @@ int CreateNewProjectWindow(){
 
     ToggleButton MoveToolButton(renderer, "Textures/MoveToolUnselected.png", "Textures/MoveToolSelected.png", 0,0,45,45);
 
-    std::vector<Sprite> MoveableSprites;
+    Sprite* SelectedSprite;
 
     bool running = true;
 
@@ -62,7 +62,12 @@ int CreateNewProjectWindow(){
         ImportToolSprite.render(renderer);
         MoveToolButton.render(renderer);
 
-        RenderCurrentSpriteQueue(renderer); 
+        if (MoveToolButton.Toggled == true && SelectedSprite != NULL){
+            SelectedSprite->x = lerp(SelectedSprite->x, mx-(SelectedSprite->w/2), .1);
+            SelectedSprite->y = lerp(SelectedSprite->y, my-(SelectedSprite->h/2), .1);
+        }
+
+        RenderCurrentSpriteQueue(renderer);
 
         while (SDL_PollEvent(&event))
         {
@@ -88,12 +93,10 @@ int CreateNewProjectWindow(){
 
                 if (MoveToolButton.Toggled == true){
 
-                    Sprite* SpriteToMove = RenderQueueCheckMouseOverlap();
-                    
-                    if (SpriteToMove != NULL){
-
-                        
-
+                    if (RenderQueueCheckMouseOverlap() == SelectedSprite){
+                        SelectedSprite = NULL;
+                    } else {
+                        SelectedSprite = RenderQueueCheckMouseOverlap();
                     }
 
                 }

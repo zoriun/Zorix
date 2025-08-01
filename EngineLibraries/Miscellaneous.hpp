@@ -32,3 +32,7 @@ Vector2 WindowDynamicVector2Update(SDL_Window* window, Vector2 Vector, int XOffs
 float lerp(float a, float b, float t){
     return a + t * (b - a);
 };
+
+float easein(float t){
+    return t*t;
+};

@@ -4,14 +4,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <SDL3/SDL_dialog.h>
 #include "EngineLibraries/Engine.hpp"
-
-float lerp(float a, float b, float t) {
-    return a + t * (b - a);
-};
-
-float easein(float t) {
-    return t * t;
-};
+#include "EngineLibraries/Miscellaneous.hpp"
 
 int main() {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO);
