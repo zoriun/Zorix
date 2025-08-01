@@ -29,11 +29,9 @@ int CreateNewProjectWindow(){
     GlobalRenderer = renderer;
 
     Sprite ImportToolSprite(renderer, "Textures/ImportToolUnselected.png",0,0,40,40);
-    Sprite MoveToolUnselectedSprite(renderer, "Textures/MoveToolUnselected.png", 0,0,50,50);
-    Sprite MoveToolSelectedSprite(renderer, "Textures/MoveToolSelected.png", 0,0,40,40);
     Sprite ToolbarSprite(renderer, "Textures/ToolBar.png", 0,0,375,200);
 
-    ToggleButton ToggleME(renderer, "Textures/MoveToolUnselected.png", "Textures/MoveToolSelected.png", 0,0,40,40);
+    ToggleButton MoveToolButton(renderer, "Textures/MoveToolUnselected.png", "Textures/MoveToolSelected.png", 0,0,45,45);
 
     std::vector<Sprite> MoveableSprites;
 
@@ -54,16 +52,15 @@ int CreateNewProjectWindow(){
         ImportToolSprite.x = (wx-ImportToolSprite.w)/2;
         ImportToolSprite.y = (wy-ImportToolSprite.h) - (wy-ToolbarSprite.h+130);
 
-        MoveToolUnselectedSprite.x = ((wx-MoveToolUnselectedSprite.w)/2)-100;
-        MoveToolUnselectedSprite.y = (wy-MoveToolUnselectedSprite.h) - (wy-MoveToolUnselectedSprite.h)+25;
+        MoveToolButton.x = ((wx-MoveToolButton.w)/2)-150;
+        MoveToolButton.y = (wy-MoveToolButton.h) - (wy-MoveToolButton.h)+27;
 
         ToolbarSprite.x = (wx-ToolbarSprite.w)/2;
         ToolbarSprite.y = (wy-ToolbarSprite.h) -(wy-ToolbarSprite.h+50);
 
         ToolbarSprite.render(renderer);
         ImportToolSprite.render(renderer);
-        MoveToolUnselectedSprite.render(renderer);
-        ToggleME.render(renderer);
+        MoveToolButton.render(renderer);
 
         RenderCurrentSpriteQueue(renderer); 
 
@@ -79,12 +76,24 @@ int CreateNewProjectWindow(){
                     SDL_ShowOpenFileDialog(FileOpenContext,NULL,window,NULL,0,NULL,false);
                 } // check for importing (holy fuck this is unreadable lmaoo, ill make a click detection library for ts later.)
 
-                if (ToggleME.IsMouseHovering() == true) {
+                if (MoveToolButton.IsMouseHovering() == true) {
                     
-                    if (ToggleME.Toggled == false){
-                        ToggleME.Toggled = true;
+                    if (MoveToolButton.Toggled == false){
+                        MoveToolButton.Toggled = true;
                     } else {
-                        ToggleME.Toggled = false;
+                        MoveToolButton.Toggled = false;
+                    }
+
+                }
+
+                if (MoveToolButton.Toggled == true){
+
+                    Sprite* SpriteToMove = RenderQueueCheckMouseOverlap();
+                    
+                    if (SpriteToMove != NULL){
+
+                        
+
                     }
 
                 }

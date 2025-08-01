@@ -23,3 +23,17 @@ void RenderCurrentSpriteQueue(SDL_Renderer* renderer){
         };
     };
 };
+
+Sprite* RenderQueueCheckMouseOverlap(){
+
+    float mx, my;
+    SDL_GetMouseState(&mx, &my);
+
+    for (int i = 0; i < RenderSpriteQueue.size(); i++){
+        if (mx >= RenderSpriteQueue[i].x && mx <= RenderSpriteQueue[i].x+RenderSpriteQueue[i].w && my >= RenderSpriteQueue[i].y && my <= RenderSpriteQueue[i].y+RenderSpriteQueue[i].h){
+            return &RenderSpriteQueue[i];
+        }
+    }
+
+    return NULL;
+};
