@@ -42,7 +42,7 @@ int main() {
                 running = false;
             }
             if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN){
-                if (mx >= NewProjectButtonRect.x && mx <= NewProjectButtonRect.x + NewProjectButtonRect.w && my >= NewProjectButtonRect.y && my <= NewProjectButtonRect.y + NewProjectButtonRect.h){
+                if (mx >= NewProjectButtonRect.x && mx <= NewProjectButtonRect.x + NewProjectButtonRect.w && my >= NewProjectButtonRect.y && my <= NewProjectButtonRect.y + NewProjectButtonRect.h && AnimateButton == false){
                     AnimateButton = true;
                     Frame = 0;
                 };

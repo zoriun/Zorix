@@ -14,6 +14,7 @@ struct ToggleButton
     ToggleButton(SDL_Renderer* renderer, const char* InactiveTextureLocation, const char* ActiveTextureLocation, float Nx, float Ny, float Nh, float Nw);
     bool IsMouseHovering();
     void render(SDL_Renderer* renderer);
+    void destroy();
 };
 
 ToggleButton::ToggleButton(SDL_Renderer* renderer, const char* InactiveTextureLocation, const char* ActiveTextureLocation, float Nx, float Ny, float Nh, float Nw){
@@ -51,4 +52,9 @@ bool ToggleButton::IsMouseHovering(){
     }
 
     return false;
+};
+
+void ToggleButton::destroy(){
+    SDL_DestroyTexture(ButtonInactiveTexture);
+    SDL_DestroyTexture(ButtonActiveTexture);
 };
