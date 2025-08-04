@@ -12,3 +12,5 @@ Use this engine to create and publish games. Redistribution, rebranding, or comm
 - Built from source by running the `build.sh` script  
 - Always the latest version (may be unstable at times)  
 - **Required packages:** SDL3, SDL3_image, g++
+
+⚠️ **This project is still in development and lacks many features that you might expect from a game engine. Use with caution!** ⚠️
