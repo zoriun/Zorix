@@ -13,6 +13,8 @@ Use this engine to create and publish games. Redistribution, rebranding, or comm
 - Always the latest version (may be unstable at times)  
 - **Required packages:** SDL3, SDL3_image, g++
 
+
 ⚠️ **This project is still in development and lacks many features that you might expect from a game engine. Use with caution!** ⚠️
+
 
 <img width="1909" height="1049" alt="Screenshot from 2025-08-05 01-14-21" src="https://github.com/user-attachments/assets/6b130dfd-165c-4600-8e0c-6c62059a4ca3" />
