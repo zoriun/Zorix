@@ -1,0 +1,56 @@
+ZORIX GAME LICENSE (ZGL)
+Version 1.0 — August 2025  
+Copyright (c) 2025 Zoriun  
+All rights reserved.
+
+This license governs your use of the Zorix game engine and related source files ("Zorix").
+
+---
+
+PERMITTED USES:
+
+You may:
+- Use Zorix to develop and publish original games, both commercial and non-commercial.
+- Share, stream, or showcase content made using Zorix (e.g., screenshots, gameplay videos).
+- Download and build Zorix from source for personal use, including game development.
+- Modify Zorix for personal or educational purposes.
+
+---
+
+RESTRICTIONS:
+
+You may NOT:
+- Sell, sublicense, or distribute Zorix, in whole or in part.
+- Rebrand, fork, or create derivative development tools based on Zorix.
+- Include Zorix as part of another engine, SDK, toolkit, or game editor.
+- Redistribute any modified or unmodified version of the Zorix source code.
+
+Zorix is distributed for individual use only. It is not intended to be embedded, bundled, or resold as a product, platform, or framework.
+
+---
+
+OWNERSHIP:
+
+All code, assets, and branding in Zorix remain the sole property of the author, Zoriun.  
+This license grants you limited rights to *use* Zorix — it does not transfer ownership.
+
+---
+
+GAME RIGHTS:
+
+You fully own the games and content you create with Zorix, including your custom code, images, music, and other assets.
+
+Zorix does not impose any restriction on the distribution, monetization, or licensing of your finished game.
+
+---
+
+DISCLAIMER:
+
+Zorix is provided “as is,” without warranty of any kind. The author is not liable for any damages arising from the use or misuse of this software.
+
+---
+
+CONTACT:
+
+For commercial licensing inquiries or special permissions, please contact the author directly.
+
